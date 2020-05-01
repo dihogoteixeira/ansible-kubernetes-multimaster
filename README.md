@@ -43,42 +43,45 @@ echo -e ' 10.11.0.43 servia01 servia01.gcse.local\n
 
 ### Criando regras de Firewalld. :Aplique essas regras em todos os `Masters`:
 
-`firewall-cmd --permanent --add-port=6443/tcp`
+```
+firewall-cmd --permanent --add-port=6443/tcp
 
-`firewall-cmd --permanent --add-port=2379-2380/tcp`
+firewall-cmd --permanent --add-port=2379-2380/tcp
 
-`firewall-cmd --permanent --add-port=10250/tcp`
+firewall-cmd --permanent --add-port=10250/tcp
 
-`firewall-cmd --permanent --add-port=10251/tcp`
+firewall-cmd --permanent --add-port=10251/tcp
 
-`firewall-cmd --permanent --add-port=10252/tcp`
+firewall-cmd --permanent --add-port=10252/tcp
 
-`firewall-cmd --permanent --add-port=10255/tcp`
+firewall-cmd --permanent --add-port=10255/tcp
 
-`firewall-cmd --permanent --add-port=2380/tcp`
+firewall-cmd --permanent --add-port=2380/tcp
 
-`firewall-cmd --permanent --add-port=2379/tcp`
+firewall-cmd --permanent --add-port=2379/tcp
 
-`modprobe br_netfilter`
+modprobe br_netfilter
 
-`echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables`
+echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
 
-`sysctl -w net.ipv4.ip_forward=1`
-
+sysctl -w net.ipv4.ip_forward=1
+```
 
 ### Criando regras de Firewalld. :Aplique essas regras em todos os `Nodes`:
 
-`firewall-cmd --permanent --add-port=10250/tcp`
+```
+firewall-cmd --permanent --add-port=10250/tcp
 
-`firewall-cmd --permanent --add-port=10255/tcp`
+firewall-cmd --permanent --add-port=10255/tcp
 
-`firewall-cmd --permanent --add-port=30000-32767/tcp`
+firewall-cmd --permanent --add-port=30000-32767/tcp
 
-`firewall-cmd --permanent --add-port=6783/tcp`
+firewall-cmd --permanent --add-port=6783/tcp
 
-`echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables`
+echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
 
-`sysctl -w net.ipv4.ip_forward=1`
+sysctl -w net.ipv4.ip_forward=1
+```
 
 ### Configure o ETCD em todos os `Masters`:
 
@@ -183,13 +186,17 @@ A workaround consists of setting `ANSIBLE_LIBRARY` and `ANSIBLE_MODULE_UTILS` en
 For Vagrant we need to install python dependencies for provisioning tasks.
 Check if Python and pip are installed:
 
+```
     python -V && pip -V
+```
 
 If this returns the version of the software, you're good to go. If not, download and install Python from here <https://www.python.org/downloads/source/>
 Install the necessary requirements
 
+```
     sudo pip install -r requirements.txt
     vagrant up
+```
 
 Documents
 ---------
@@ -221,14 +228,14 @@ Documents
 Supported Linux Distributions
 -----------------------------
 
--   **Container Linux by CoreOS**
--   **Debian** Buster, Jessie, Stretch, Wheezy
--   **Ubuntu** 16.04, 18.04
--   **CentOS/RHEL** 7
--   **Fedora** 28
--   **Fedora/CentOS** Atomic
--   **openSUSE** Leap 42.3/Tumbleweed
--   **Oracle Linux** 7
+- [x] **Container Linux by CoreOS**
+- [x] **Debian** Buster, Jessie, Stretch, Wheezy
+- [x] **Ubuntu** 16.04, 18.04
+- [x] **CentOS/RHEL** 7
+- [x] **Fedora** 28
+- [x] **Fedora/CentOS** Atomic
+- [x] **openSUSE** Leap 42.3/Tumbleweed
+- [x] **Oracle Linux** 7
 
 Note: Upstart/SysV init based OS types are not supported.
 
